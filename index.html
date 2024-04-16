@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socrates Henry</title>   
+</head>
+
+
+<body>
+    <h1>Socrates Henry</h1>
+    <input type="text" id="inputTache" placeholder="Ajouter une nouvelle tâche">
+    <button onclick="ajouterTache()">Ajouter</button>
+    <ul id="listeTaches"></ul>
+
+    <script >
+        function ajouterTache() {
+    const inputTache = document.getElementById("inputTache");
+    const texteTache = inputTache.value.trim();
+
+    if (texteTache !== "") {
+        const nouvelleTache = document.createElement("li");
+        nouvelleTache.textContent = texteTache;
+
+        // Créer le bouton Supprimer
+        const boutonSupprimer = document.createElement("button");
+        boutonSupprimer.textContent = "Supprimer";
+        boutonSupprimer.addEventListener("click", function () {
+            supprimerTache(nouvelleTache);
+        });
+
+        // Ajouter le bouton Supprimer à la tâche
+        nouvelleTache.appendChild(boutonSupprimer);
+
+        // Ajouter la tâche à la liste
+        document.getElementById("listeTaches").appendChild(nouvelleTache);
+
+        // Vider le champ de saisie
+        inputTache.value = "";
+    }
+}
+
+// Fonction pour supprimer une tâche
+function supprimerTache(tache) {
+    tache.remove();
+}
+
+    </script>
+
+</body>
+
+</html>
